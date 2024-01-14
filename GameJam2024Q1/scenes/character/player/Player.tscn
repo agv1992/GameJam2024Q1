@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://2xt2losb3bcl"]
+
+[ext_resource type="Texture2D" uid="uid://4ayobc1otneg" path="res://assets/sprite/temp/tile_0000.png" id="1_grbso"]
+[ext_resource type="Texture2D" uid="uid://d4ec116ebl1e3" path="res://assets/sprite/temp/tile_0001.png" id="2_1i48y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gnqow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_grbso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1i48y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86hpf"]
+size = Vector2(18, 21)
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, -12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_gnqow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_86hpf")
