@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://2xt2losb3bcl"]
+[gd_scene load_steps=6 format=3 uid="uid://2xt2losb3bcl"]
 
 [ext_resource type="Texture2D" uid="uid://4ayobc1otneg" path="res://assets/sprite/temp/tile_0000.png" id="1_grbso"]
+[ext_resource type="Script" path="res://scenes/character/player/Player.gd" id="1_uu8bq"]
 [ext_resource type="Texture2D" uid="uid://d4ec116ebl1e3" path="res://assets/sprite/temp/tile_0001.png" id="2_1i48y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gnqow"]
@@ -20,14 +21,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86hpf"]
 size = Vector2(18, 21)
 
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -12)
+script = ExtResource("1_uu8bq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gnqow")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_86hpf")

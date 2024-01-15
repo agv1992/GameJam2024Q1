@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvvjsd1v2d4r3"]
+
+[ext_resource type="PackedScene" uid="uid://2xt2losb3bcl" path="res://scenes/character/player/Player.tscn" id="1_rc6jg"]
+[ext_resource type="PackedScene" uid="uid://cbdn2clspkmhq" path="res://scenes/camera/camera-player/CameraPlayer.tscn" id="2_uqjke"]
+
+[node name="LevelBase" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_rc6jg")]
+
+[node name="CameraPlayer" parent="." instance=ExtResource("2_uqjke")]
