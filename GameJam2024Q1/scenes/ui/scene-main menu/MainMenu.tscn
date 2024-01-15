@@ -1,14 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu6oj6cxtrglr"]
+[gd_scene load_steps=4 format=3 uid="uid://bu6oj6cxtrglr"]
 
 [ext_resource type="Script" path="res://scenes/ui/scene-main menu/MainMenu.gd" id="1_j36uy"]
+[ext_resource type="FontFile" uid="uid://csgat6hsq2o75" path="res://assets/font/UbuntuMono-B.ttf" id="2_n4ccs"]
 [ext_resource type="AudioStream" uid="uid://cht8a03ls2qw7" path="res://assets/sound/song-main menu.mp3" id="2_q4jb8"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_j36uy")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 960.0
-offset_bottom = 540.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.0
+offset_top = -67.0
+offset_right = 298.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -29,17 +40,25 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "To Be Determined"
+theme_override_fonts/font = ExtResource("2_n4ccs")
+theme_override_font_sizes/font_size = 40
+text = "Run Jump . . . It's Spreading
+
+
+"
 
 [node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n4ccs")
+theme_override_font_sizes/font_size = 24
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n4ccs")
+theme_override_font_sizes/font_size = 24
 text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
