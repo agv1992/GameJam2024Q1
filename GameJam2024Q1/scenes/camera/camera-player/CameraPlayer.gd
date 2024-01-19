@@ -23,3 +23,7 @@ func acquire_target():
 		#     one player in the "player" group, revisit.
 		var player_sprite = sprite_nodes[0] as Node2D
 		target_position = player_sprite.global_position
+
+
+
+		

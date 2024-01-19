@@ -23,8 +23,16 @@ func _ready():
 	$LevelArea2D.connect(\"body_exited\", on_player_out_of_bounds, CONNECT_DEFERRED)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _process(delta):
+	if Input.is_action_just_pressed(\"Quit\"):
+		print(\"Goodbye!!!\")
+		get_tree().quit()
+	elif Input.is_action_pressed(\"Toggle Camera Zoom\"):
+		$LevelBase/CameraPlayer.zoom.x = lerp($LevelBase/CameraPlayer.zoom.x, 0.5, 0.1)
+		$LevelBase/CameraPlayer.zoom.y = lerp($LevelBase/CameraPlayer.zoom.y, 0.5, 0.1)
+	else:
+		$LevelBase/CameraPlayer.zoom.x = lerp($LevelBase/CameraPlayer.zoom.x, 2.0, 0.1)
+		$LevelBase/CameraPlayer.zoom.y = lerp($LevelBase/CameraPlayer.zoom.y, 2.0, 0.1)
 
 
 func register_player(player):
@@ -42,28 +50,6 @@ func spawn_player():
 func on_player_out_of_bounds(_area2d):
 	call_deferred(\"spawn_player\")
 
-
-# Called every input, then determined if it's useful or not
-func _input(event):
-	# Ensure that the key pressed, is in the Input Map
-	if event is InputEventKey and event.pressed:
-		# SHIFT = need to smoothly transition between player cam and world cam
-		if event.keycode == KEY_SHIFT:
-			var trans_duration = 1.0	# How many seconds is desired for transition length
-
-			# Need to toggle FROM player cam TO world cam
-			if player_camera.is_current():
-				CameraTransistion.transition_camera2D(player_camera, world_camera, trans_duration)
-			else:	# Need to toggle FROM world cam TO player cam
-				CameraTransistion.transition_camera2D(world_camera, player_camera, trans_duration)
-
-			# Need to wait 1.5 seconds so cameras .is_current() attribute is finised updating
-			await get_tree().create_timer(1.5).timeout
-
-		# ESCAPE = need to say salutations before quitting the game
-		elif event.keycode == KEY_ESCAPE:
-			print(\"Goodbye!!!\")
-			get_tree().quit()
 
 "
 

@@ -59,7 +59,7 @@ func _determine_movement_vector(delta):
 
 func _update_animation():
 	if abs(velocity.x) > 1:
-		$AnimatedSprite2D.flip_h = false if velocity.x > 0 else true
+		$AnimatedSprite2D.flip_h = true if velocity.x > 0 else false
 
 
 func store_previous_velocity():
