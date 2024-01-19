@@ -18,3 +18,17 @@ func on_play_pressed():
 
 func on_quit_pressed():
 	get_tree().quit()
+
+
+# Called every input, then determined if it's useful or not
+func _input(event):
+	# Ensure that the key pressed, is in the Input Map
+	if event is InputEventKey and event.pressed:
+		# ENTER = Select Play button as default for quick selection
+		if event.keycode == KEY_ENTER:
+			on_play_pressed()
+
+		# ESCAPE = need to say salutations before quitting the game
+		elif event.keycode == KEY_ESCAPE:
+			print("Goodbye!!!")
+			on_quit_pressed()
