@@ -24,15 +24,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed(\"Quit\"):
-		print(\"Goodbye!!!\")
-		get_tree().quit()
-	elif Input.is_action_pressed(\"Toggle Camera Zoom\"):
-		$LevelBase/CameraPlayer.zoom.x = lerp($LevelBase/CameraPlayer.zoom.x, 0.5, 0.1)
-		$LevelBase/CameraPlayer.zoom.y = lerp($LevelBase/CameraPlayer.zoom.y, 0.5, 0.1)
-	else:
-		$LevelBase/CameraPlayer.zoom.x = lerp($LevelBase/CameraPlayer.zoom.x, 2.0, 0.1)
-		$LevelBase/CameraPlayer.zoom.y = lerp($LevelBase/CameraPlayer.zoom.y, 2.0, 0.1)
+	pass
 
 
 func register_player(player):

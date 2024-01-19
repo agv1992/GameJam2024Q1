@@ -12,6 +12,13 @@ func _ready():
 func _process(delta):
 	acquire_target()
 	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * 5)) 
+	
+	if Input.is_action_pressed("Toggle Camera Zoom"):
+		zoom.x = lerp(zoom.x, 0.5, 0.1)
+		zoom.y = lerp(zoom.y, 0.5, 0.1)
+	else:
+		zoom.x = lerp(zoom.x, 2.0, 0.1)
+		zoom.y = lerp(zoom.y, 2.0, 0.1)
 
 
 func acquire_target():
