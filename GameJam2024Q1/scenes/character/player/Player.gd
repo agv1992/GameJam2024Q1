@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 300
 
 var jump_count : int
 var velocity_x_before_collision = 0
+var movement_enabled : bool = true
 
 signal damage_taken
 
@@ -21,6 +22,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	store_previous_velocity()
+	movement_enabled = true if !Input.is_action_pressed("Toggle Camera Zoom") else false
 	_determine_movement_vector(delta)
 	_update_animation()
 	move_and_slide()
@@ -29,14 +31,15 @@ func _process(delta):
 func _determine_movement_vector(delta):
 	velocity.y += GRAVITY * delta
 	
+	
 	if Input.is_action_just_pressed("Move Left") and abs(velocity.x) <= MAX_X_VELOCITY:
-		velocity.x += -700 * delta
+		velocity.x += -700 * delta * int(movement_enabled)
 	elif Input.is_action_just_pressed("Move Right") and abs(velocity.x) <= MAX_X_VELOCITY:
-		velocity.x += 700 * delta
+		velocity.x += 700 * delta * int(movement_enabled)
 	elif Input.is_action_pressed("Move Left") and abs(velocity.x) <= MAX_X_VELOCITY:
-		velocity.x += -500 * delta
+		velocity.x += -500 * delta * int(movement_enabled)
 	elif Input.is_action_pressed("Move Right") and abs(velocity.x) <= MAX_X_VELOCITY:
-		velocity.x += 500 * delta
+		velocity.x += 500 * delta * int(movement_enabled)
 		
 	# This is the velocity change for when someone is stopping
 	elif velocity.x >= 25:
@@ -59,7 +62,7 @@ func _determine_movement_vector(delta):
 
 func _update_animation():
 	if abs(velocity.x) > 1:
-		$AnimatedSprite2D.flip_h = false if velocity.x > 0 else true
+		$AnimatedSprite2D.flip_h = true if velocity.x > 0 else false
 
 
 func store_previous_velocity():
